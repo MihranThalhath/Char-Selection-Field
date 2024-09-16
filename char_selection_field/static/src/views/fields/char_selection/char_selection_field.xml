@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+
+    <t t-name="char_selection_field.CharSelectionField">
+        <t t-if="props.readonly">
+            <span t-esc="string" t-att-raw-value="value" />
+        </t>
+        <t t-else="">
+
+            <input t-att-value="value" t-att-list="props.id" name="char_selection_field" id="char_selection_field" class="o_input" type="text" autocomplete="off" t-on-change="onChange" />
+            <datalist
+                class="o_input pe-3"
+                t-att-id="props.id">
+                <t t-foreach="options" t-as="option" t-key="option[0]">
+                    <option
+                        t-att-selected="option[0] === value"
+                        t-att-value="stringify(option[0])"
+                        t-esc="option[1]"
+                    />
+                </t>
+            </datalist>
+
+        </t>
+    </t>
+
+</templates>
